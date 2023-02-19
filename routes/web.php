@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
+    return view('welcome');
+});
+
+Route::get('/mail', function () {
 
 
     // adding the mail functionality
@@ -26,8 +29,9 @@ Route::get('/', function () {
     ];
 
     // the following line will be sending the view, data
-    Mail::send('emails.test', $data, function ($message){
+    Mail::send('emails.test', $data, function ($message) {
         $message->to('shadreza100@gmail.com', 'shad')->subject('hello from app');
-        
     });
+
+    return 'mail sent inshaALLAH';
 });
