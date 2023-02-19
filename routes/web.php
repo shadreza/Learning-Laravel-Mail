@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+
+
+    // adding the mail functionality
+
+    $data = [
+        'title' => 'Assalamu Alaikum all !!!',
+        'content' => 'We are all muslims'
+    ];
+
+    // the following line will be sending the view, data
+    Mail::send('emails.test', $data, function ($message){
+        $message->to('shadreza100@gmail.com', 'shad')->subject('hello from app');
+        
+    });
 });
